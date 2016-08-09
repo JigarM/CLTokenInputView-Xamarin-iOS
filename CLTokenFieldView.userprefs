@@ -1,0 +1,26 @@
+﻿<Properties StartupItem="Example/Example.csproj">
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CLTokenFieldView" expanded="True">
+            <Node name="CLTokenFieldView" expanded="True" />
+            <Node name="Example" expanded="True">
+              <Node name="References" expanded="True" />
+              <Node name="AppDelegate.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../Desktop/Projects/Bloomz/Bloomz.iOS/TableCells/Post/RegularPostTableCellText.cs" line="449" offsetX="409" offsetY="3480" expression="lblMessage.Frame" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.ItemProperties.CLTokenFieldView PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.Example PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.7B0E4682-E384-494D-928D-1583BF3C8C62" />
+</Properties>
