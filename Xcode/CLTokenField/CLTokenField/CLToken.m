@@ -20,6 +20,17 @@
     return self;
 }
 
+- (BOOL)isEqualToToken:(CLToken *)tokenObject {
+    if (!tokenObject) {
+        return NO;
+    }
+    
+    BOOL haveEqualDisplayText = (!self.displayText && !tokenObject.displayText) || [self.displayText isEqualToString:tokenObject.displayText];
+    BOOL haveEqualContext = (!self.context && !tokenObject.context) || [self.context isEqual:tokenObject.context];
+    
+    return haveEqualDisplayText && haveEqualContext;
+}
+
 - (BOOL)isEqual:(id)object
 {
     if (self == object) {
@@ -29,12 +40,14 @@
         return NO;
     }
 
-    CLToken *otherObject = (CLToken *)object;
+    /*CLToken *otherObject = (CLToken *)object;
     if ([otherObject.displayText isEqualToString:self.displayText] &&
         [otherObject.context isEqual:self.context]) {
         return YES;
     }
-    return NO;
+    return NO;*/
+    CLToken *otherObject = (CLToken *)object;
+    return [self isEqualToToken:otherObject];
 }
 
 - (NSUInteger)hash
