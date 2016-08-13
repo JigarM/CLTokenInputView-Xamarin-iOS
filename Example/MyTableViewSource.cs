@@ -13,6 +13,7 @@ namespace Example
 		public static readonly NSString Key = new NSString("MyTableViewSource");
 		List<string> filteredNames;
 		CLTokenInputView tokenInputView;
+		ViewController vc;
 
 		#endregion
 
@@ -21,10 +22,11 @@ namespace Example
 		/// <summary>
 		/// Initializes a new instance of the <see cref="T:Example.MyTableViewSource"/> class.
 		/// </summary>
-		public MyTableViewSource(List<string> _filteredNames, CLTokenInputView _tokenInputView)
+		public MyTableViewSource(ViewController _vc, List<string> _filteredNames, CLTokenInputView _tokenInputView)
 		{
 			filteredNames = _filteredNames;
 			tokenInputView = _tokenInputView;
+			vc = _vc;
 		}
 		#endregion
 
@@ -75,11 +77,19 @@ namespace Example
 		{
 			tableView.DeselectRow(indexPath, true);
 
+			//UITableViewCell cell = tableView.CellAt(indexPath);
 			string name = filteredNames[indexPath.Row];
 			CLToken token = new CLToken(name, null);
-			if (tokenInputView.Editing)
+			if (vc.selectedNamesString.Contains(name))
 			{
-				tokenInputView.AddToken(token);
+				tokenInputView.RemoveToken(token);
+			}
+			else
+			{
+				if (tokenInputView.Editing)
+				{
+					tokenInputView.AddToken(token);
+				}
 			}
 		}
 

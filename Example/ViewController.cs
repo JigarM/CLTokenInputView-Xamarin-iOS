@@ -12,6 +12,7 @@ namespace Example
 		#region Declarations
 		public List<string> names, filteredNames;
 		public List<CLToken> selectedNames;
+		public List<string> selectedNamesString;
 
 		//CLTokenInputView
 		CLTokenInputView tokenInputView;
@@ -47,6 +48,7 @@ namespace Example
 			names = new List<string> {"John Doe", "Brenden Mulligan", "Cluster Labs, Inc.", "Pat Fives", "Rizwan Sattar", "Taylor Hughes" };
 			filteredNames = new List<string>();
 			selectedNames = new List<CLToken>();
+			selectedNamesString = new List<string>();
 
 			//background color
 			this.View.BackgroundColor = UIColor.GroupTableViewBackgroundColor;
@@ -65,7 +67,7 @@ namespace Example
 
 			tableview = new UITableView();
 			tableview.Frame = new CoreGraphics.CGRect(0, tokenInputView.Frame.Y + tokenInputView.Frame.Height, UIScreen.MainScreen.Bounds.Width, UIScreen.MainScreen.Bounds.Height - 100);
-			tableview.Source = new MyTableViewSource(filteredNames, tokenInputView);
+			tableview.Source = new MyTableViewSource(this, filteredNames, tokenInputView);
 			this.View.AddSubview(tableview);
 		}
 
@@ -130,7 +132,7 @@ namespace Example
 
 				if (filteredNames != null)
 				{
-					vc.tableview.Source = new MyTableViewSource(filteredNames, vc.tokenInputView);
+					vc.tableview.Source = new MyTableViewSource(vc, filteredNames, vc.tokenInputView);
 					vc.tableview.ReloadData();
 				}
 			}
@@ -140,6 +142,7 @@ namespace Example
 				string name = token.DisplayText;
 				Console.WriteLine("Did Add token => " + name);
 				vc.selectedNames.Add(token);
+				vc.selectedNamesString.Add(name);
 			}
 
 			public override void DidRemoveToken(CLTokenInputView view, CLToken token)
@@ -147,6 +150,7 @@ namespace Example
 				string name = token.DisplayText;
 				Console.WriteLine("Did Remove token => " + name);
 				vc.selectedNames.Remove(token);
+				vc.selectedNamesString.Remove(name);
 			}
 
 			#endregion
